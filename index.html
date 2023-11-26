@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Latihan Membuat Web Tanpa Reload</title>
+    <!-- Bootstrap versi 4 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body class="bg-secondary">
+    <div class="container-fluid mt-4">
+      <!-- navbar bootstrap  -->
+      <nav class="navbar navbar-light bg-light mb-4">
+        <a class="navbar-brand" href="#">
+          <img src="./img/logo.png" width="30" height="30" alt="" />
+          Artisan Aroma Beans
+        </a>
+      </nav>
+      <!-- menu -->
+      <div class="row">
+        <div id="menu" class="col-3">
+          <ul class="list-group">
+            <li class="list-group-item"><a href="beranda">Beranda</a></li>
+            <li class="list-group-item"><a href="produk">Produk</a></li>
+            <li class="list-group-item"><a href="kontak">Kontak</a></li>
+            <li class="list-group-item"><a href="profil">Profil</a></li>
+          </ul>
+        </div>
+        <div class="col-9">
+          <div id="content">
+            <!-- isi halaman akan diload di sini  -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // pilih konten beranda saat mengakses halaman ini
+        $("#content").load("./php/beranda.php");
+        // saat a href diklik maka
+        $("a").click(function () {
+          // simpan isi href ke dalam var halaman
+          var halaman = $(this).attr("href");
+          // lalu konten akan diisi halaman yang sesuai dengan pilihan
+          $("#content").load("./php/" + halaman + ".php");
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>
